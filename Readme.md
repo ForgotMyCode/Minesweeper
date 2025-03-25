@@ -2,7 +2,7 @@
 
 ## Minesweeper game
 
-Minesweeper writter in Delphi using RAD Studio for the [Ideasawakened challenge](https://ideasawakened.com/post/rad-programmer-challenge-number-1-minesweeper-game-build).
+Minesweeper written in Delphi using RAD Studio for the [Ideasawakened challenge](https://ideasawakened.com/post/rad-programmer-challenge-number-1-minesweeper-game-build).
 
 ## Features
 
