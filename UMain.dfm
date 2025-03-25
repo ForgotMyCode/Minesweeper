@@ -8,7 +8,7 @@ object Form1: TForm1
   ClientWidth = 632
   Color = clBtnFace
   Constraints.MinHeight = 160
-  Constraints.MinWidth = 220
+  Constraints.MinWidth = 210
   DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -84,8 +84,9 @@ object Form1: TForm1
     DoubleBuffered = True
     ParentDoubleBuffered = False
     TabOrder = 1
-    ExplicitLeft = -46
-    ExplicitTop = -37
+    ExplicitTop = 65
+    ExplicitWidth = 632
+    ExplicitHeight = 398
     inherited PaintBox1: TPaintBox
       Width = 632
       Height = 398
