@@ -42,9 +42,9 @@ object HighScoresForm: THighScoresForm
   object Label3: TLabel
     Left = 8
     Top = 29
-    Width = 33
+    Width = 36
     Height = 15
-    Caption = 'Mines'
+    Caption = 'Mines:'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clCream
     Font.Height = -12

@@ -9,7 +9,9 @@ uses
   UBoardFrame in 'UBoardFrame.pas' {BoardFrame: TFrame},
   UDogFrame in 'UDogFrame.pas' {DogFrame: TFrame},
   UCustomBoardForm in 'UCustomBoardForm.pas' {CustomBoardForm},
-  UHighScoresForm in 'UHighScoresForm.pas' {HighScoresForm};
+  UHighScoresForm in 'UHighScoresForm.pas' {HighScoresForm},
+  Vcl.Themes,
+  Vcl.Styles;
 
 {$R *.res}
 

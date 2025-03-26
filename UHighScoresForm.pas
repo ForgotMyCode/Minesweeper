@@ -88,28 +88,59 @@ begin
 end;
 
 procedure THighScoresForm.NewScore(aScore: TDateTime);
-  procedure _overwrite(aPlace: Integer);
+  function _getUserName(): String;
   begin
-    var userName: String;
-    InputQuery('New high score!', 'What is your name?', userName);
-
-    var ini := TInifile.Create('./highscores.ini');
-    try
-      ini.WriteDateTime(GetSectionKey(), 'Place' + IntToStr(aPlace) + 'Time', aScore);
-      ini.WriteString(GetSectionKey(), 'Place' + IntToStr(aPlace) + 'Name', userName);
-    finally
-      FreeAndNil(ini);
-    end;
-
-    LoadForConfig(fWidth, fHeight, fMines);
+    InputQuery('New high score!', 'What is your name?', result);
   end;
 begin
-  if fPlace1Time > aScore then
-    _overwrite(1)
-  else if fPlace2Time > aScore then
-    _overwrite(2)
-  else if fPlace3Time > aScore then
-    _overwrite(3);
+
+  // Is score worse than 3rd place? -> exit
+  if aScore >= fPlace3Time then
+    Exit();
+
+  var userName := _getUserName();
+
+  fPlace3Time := aScore;
+  lblPlace3Name.Caption := userName;
+
+  // Promote to 2nd
+  if aScore < fPlace2Time then
+  begin
+    fPlace3Time := fPlace2Time;
+    lblPlace3Name.Caption := lblPlace2Name.Caption;
+
+    fPlace2Time := aScore;
+    lblPlace2Name.Caption := userName;
+  end;
+
+  // Promote to 1st
+  if aScore < fPlace1Time then
+  begin
+    fPlace2Time := fPlace1Time;
+    lblPlace2Name.Caption := lblPlace1Name.Caption;
+
+    fPlace1Time := aScore;
+    lblPlace1Name.Caption := userName;
+  end;
+
+  // Write
+  var key := GetSectionKey();
+
+  var ini := TIniFile.Create('./highscores.ini');
+  try
+    ini.WriteString(key, 'Place1Name', lblPlace1Name.Caption);
+    ini.WriteString(key, 'Place2Name', lblPlace2Name.Caption);
+    ini.WriteString(key, 'Place3Name', lblPlace3Name.Caption);
+
+    ini.WriteDateTime(key, 'Place1Time', fPlace1Time);
+    ini.WriteDateTime(key, 'Place2Time', fPlace2Time);
+    ini.WriteDateTime(key, 'Place3Time', fPlace3Time);
+  finally
+    FreeAndNil(ini);
+  end;
+
+  // Reload
+  LoadForConfig(fWidth, fHeight, fMines);
 end;
 
 end.
