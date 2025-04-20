@@ -15,3 +15,7 @@ Minesweeper written in Delphi using RAD Studio for the [Ideasawakened challenge]
 * Remaining mines
 * Watchdog 🐶
 * Visual twist, all the visuals are made by hand
+
+## Requirements
+
+Delphi 12
